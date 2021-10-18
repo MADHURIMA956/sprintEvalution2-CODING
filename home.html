@@ -10,14 +10,18 @@
         #nav{
             display: flex;
             width: 100%;
-            padding: 10px;
             background-color: brown;
         }
         #nav > div{
             width: 30%;
         }
+        #nav > div:nth-child(1){
+          color: white;
+          padding-left: 10px;
+        }
         #nav > div:nth-child(2){
             flex-grow: 1;
+            padding: 15px 10px;
         }
         #query{
             width: 70%;
@@ -47,7 +51,7 @@
 </head>
 <body>
     <div id="nav">
-        <div>.</div>
+        <div><h2>NEWStimes</h2> </div>
        <div><input id="query" type="text">
         <button onclick="searchNews()" id="search">SEARCH</button></div> 
         <div>.</div>
