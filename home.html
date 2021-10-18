@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+  <!-- <script src='home.js'></script>  -->
+    <style>
+        #nav{
+            display: flex;
+            width: 100%;
+            padding: 10px;
+            background-color: brown;
+        }
+        #nav > div{
+            width: 30%;
+        }
+        #nav > div:nth-child(2){
+            flex-grow: 1;
+        }
+        #query{
+            width: 70%;
+            padding: 10px;
+          
+        }
+        #search{
+            width: 20%;
+            padding: 10px;
+        }
+        #contianer > div{
+           background-color: azure;
+           margin: 5% 10%;
+
+        }
+        img{
+            width: 30%;
+        }
+        .inner_div{
+            display: flex;
+        }
+        .inner_div > div ,.inner_div > p{
+            width: 30%;
+            margin-right: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div>.</div>
+       <div><input id="query" type="text">
+        <button onclick="" id="search">SEARCH</button></div> 
+        <div>.</div>
+    </div>
+
+    <div id="contianer">
+
+    </div>
+</body>
+</html>
+
+<script>
+ 
+ let parent =document.getElementById('contianer');
+// let data = [];
+
+async function getNews(){
+
+    try{
+        let res = await fetch('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=c7dad099dbe3485fb4717ac27baa0aa9');
+
+        let data = await res.json();
+
+        console.log(data.articles);
+        showNews(data.articles)
+    }catch(e){
+        console.log("Got an error" , e)
+    }
+}
+getNews();
+
+
+function showNews(contianer){
+
+    contianer.forEach((news)=>{
+        let div = document.createElement("div");
+        div.setAttribute("class" ,"inner_div")
+
+        let div2 = document.createElement("div");
+        div2.setAttribute("class" ,"inner2_div")
+      
+        let author = document.createElement("p");
+        author.innerText = news.author;
+
+        console.log(author);
+        
+       
+        let urlToImage = document.createElement("img");
+        urlToImage.src = news.urlToImage;
+
+        let title = document.createElement("h2");
+        title.innerText = news.title
+
+      
+        let description = document.createElement("p");
+        description.innerText = news.description;
+
+       
+        let  publishedAt = document.createElement("p");
+        publishedAt.innerText = news.publishedAt;
+
+
+
+        div2.append(title,author, publishedAt)
+
+        div.append(div2,description,urlToImage);
+
+        parent.append(div)
+
+    });
+}
+
+
+
+</script>
