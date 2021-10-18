@@ -135,6 +135,8 @@ function showNews(contianer){
             let res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${query}&apiKey=c7dad099dbe3485fb4717ac27baa0aa9`);
 
             let data = await res.json();
+            
+
             window.location.href ='search.html';
             //getsearchNews(data);
             console.log(data.articles)
