@@ -49,13 +49,12 @@
     <div id="nav">
         <div>.</div>
        <div><input id="query" type="text">
-        <button onclick="" id="search">SEARCH</button></div> 
+        <button onclick="searchNews()" id="search">SEARCH</button></div> 
         <div>.</div>
     </div>
 
-    <div id="contianer">
+    <div id="contianer"></div>
 
-    </div>
 </body>
 </html>
 
@@ -73,6 +72,7 @@ async function getNews(){
 
         console.log(data.articles);
         showNews(data.articles)
+
     }catch(e){
         console.log("Got an error" , e)
     }
@@ -92,7 +92,7 @@ function showNews(contianer){
         let author = document.createElement("p");
         author.innerText = news.author;
 
-        console.log(author);
+        //console.log(author);
         
        
         let urlToImage = document.createElement("img");
@@ -120,6 +120,18 @@ function showNews(contianer){
     });
 }
 
+
+
+</script>
+
+
+<script>
+
+    async function searchNews(){
+        window.location.href ='search.html';
+    }
+
+  
 
 
 </script>
