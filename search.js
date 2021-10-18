@@ -1,21 +1,6 @@
 let parent = document.getElementById("contianer2")
+let data =[]
 
-async function searchNews(){
-
-        try{
-            let query = document.getElementById("query").value;
-
-            let res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${query}&apiKey=c7dad099dbe3485fb4717ac27baa0aa9`);
-
-            let data = await res.json();
-
-            getsearchNews(data.articles)
-            console.log(data.articles)
-        }catch(e){
-            console.log('Got an error',e);
-        }
-
-}
 
 function getsearchNews(news){
        
@@ -26,7 +11,7 @@ function getsearchNews(news){
         let author = document.createElement("p");
         author.innerText = news.author;
 
-        //console.log(author);
+        console.log(author);
         
        
         let urlToImage = document.createElement("img");
@@ -43,12 +28,10 @@ function getsearchNews(news){
         let  publishedAt = document.createElement("p");
         publishedAt.innerText = news.publishedAt;
 
-
-
-    
-
         div.append(urlToImage,title,author, publishedAt ,description);
 
-        parent.append(div)
+        parent.append(div);
 
     }
+
+    getsearchNews(data);
